@@ -1,0 +1,9 @@
+{
+  "standard.enable": false,
+  "editor.fontSize": 14,
+  "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": false,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
+}
