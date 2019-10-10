@@ -40,7 +40,7 @@ function EmojiPicker({ emojis }) {
     const searchInputs = value.split(" ");
     const items = Object.entries(emojilib.lib)
       .filter(([key, { keywords }]) =>
-        searchInputs.find(input => keywords.includes(input))
+        searchInputs.find(input => keywords.includes(input.toLowerCase()))
       )
       .map(item => item[0]);
 
@@ -74,7 +74,9 @@ function EmojiPicker({ emojis }) {
         <div className="emojis">
           {results.length ? (
             <dl className="category">
-              <dt className="title">Search Results</dt>
+              <dt className="title" id="emoji_search_results">
+                Search Results
+              </dt>
               <dd className="collection">
                 {results.map(key => {
                   const emoji = emojilib.lib[key];
