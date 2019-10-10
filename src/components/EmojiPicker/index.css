@@ -1,8 +1,11 @@
 .EmojiPicker {
+  background-color: var(--bgColor);
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-sizing: border-box;
   color: var(--text);
+  display: flex;
+  flex-flow: column nowrap;
   font-family: var(--family);
   font-size: var(--size);
   height: 25em;
@@ -10,31 +13,57 @@
   width: 25em;
 }
 
-.EmojiPicker > .selection {
+.EmojiPicker > .head {
   box-sizing: border-box;
-  display: flex;
-  height: 100%;
+  flex-shrink: 0;
   width: 100%;
 }
 
-.EmojiPicker > .selection > .searchbar {
-  flex-grow: 0;
+.EmojiPicker > .head > .nav {
+  display: flex;
+  font-size: var(--emojiSize);
+  justify-content: space-between;
+  padding: 0.7em;
 }
 
-.EmojiPicker > .selection > .category {
+.EmojiPicker > .head > .searchbar {
+}
+
+.EmojiPicker > .head > .nav > .item {
+  border-radius: var(--radius);
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  vertical-align: middle;
+  width: 100%;
+  will-change: background-color;
+}
+
+.EmojiPicker > .content {
+  box-sizing: border-box;
   flex: 1;
-  margin: 0;
+  margin-bottom: 0.7em;
   overflow-y: scroll;
-  padding: 0.5em;
+  padding: 0 0.7em;
 }
 
-.EmojiPicker > .selection > .category > .title {
+.EmojiPicker > .content > .emojis > .category {
+  margin: 0;
+}
+
+.EmojiPicker > .content > .emojis > .category > .title {
+  background-color: var(--bgColor);
   font-size: var(--titleSize);
   font-weight: 600;
-  margin: 0.25em;
+  padding: 0.25em;
+  position: sticky;
+  text-transform: capitalize;
+  top: 0;
+  z-index: 1;
 }
 
-.EmojiPicker > .selection > .category > .collection {
+.EmojiPicker > .content > .emojis > .category > .collection {
   align-items: center;
   display: grid;
   grid-column-gap: 0.2em;
@@ -45,8 +74,9 @@
   margin: 0.25em 0;
 }
 
-.EmojiPicker > .selection > .category > .collection > .item {
+.EmojiPicker > .content > .emojis > .category > .collection > .item {
   appearance: none;
+  background-color: rgba(0, 0, 0, 0);
   border-radius: var(--radius);
   border: 0;
   box-sizing: border-box;
@@ -56,11 +86,12 @@
   line-height: var(--emojiSize);
   outline: none;
   padding: 0;
-  transition: filter 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   width: var(--emojiSize);
-  will-change: filter;
+  will-change: background-color;
 }
 
-.EmojiPicker > .selection > .category > .collection > .item:hover {
-  filter: brightness(95%);
+.EmojiPicker > .head > .nav > .item:hover,
+.EmojiPicker > .content > .emojis > .category > .collection > .item:hover {
+  background-color: var(--emojiHover);
 }
