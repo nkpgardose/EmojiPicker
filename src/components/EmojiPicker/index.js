@@ -32,21 +32,31 @@ const defaultProps = {
 };
 
 function EmojiPicker({ emojis }) {
-  console.log(emojis);
   return (
     <div className="EmojiPicker">
-      <div className="content">
+      <header className="head">
+        <nav className="nav">
+          {Object.keys(emojis).map(key => {
+            return (
+              <a key={`nav_${key}`} className="item" href={`#emoji_${key}`}>
+                {emojis[key][0].char}
+              </a>
+            );
+          })}
+        </nav>
         <div className="searchbar">
           <div className="input"></div>
           <div className="submit"></div>
         </div>
+      </header>
+      <div className="content">
         <div className="emojis">
           {Object.entries(emojis).map(emojisArr => {
             const key = emojisArr[0];
             const value = emojisArr[1];
 
             return (
-              <dl key={key} className="category">
+              <dl key={key} className="category" id={`emoji_${key}`}>
                 <dt className="title">{key.replace(/_/g, " ")}</dt>
                 <dd className="collection">
                   {value.map(emoji => (

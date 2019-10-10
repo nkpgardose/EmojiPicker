@@ -1,13 +1,14 @@
 :root {
-  --size: 1rem;
   --family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  --border: gray;
-  --text: gray;
-  --highlight: darkgray;
-  --radius: 0.25em;
-  --titleSize: 1.5em;
-  --emojiSize: 1.45em;
   --bgColor: white;
+  --border: #7f7f7f;
+  --emojiHover: rgb(240, 240, 240);
+  --emojiSize: 1.45em;
+  --highlight: #7f7f7f;
+  --radius: 0.5em;
+  --size: 1rem;
+  --text: #7f7f7f;
+  --titleSize: 1.5em;
 }
