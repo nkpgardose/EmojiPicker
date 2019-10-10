@@ -45,8 +45,11 @@ function EmojiPicker({ emojis }) {
           })}
         </nav>
         <div className="searchbar">
-          <div className="input"></div>
-          <div className="submit"></div>
+          <input
+            className="input"
+            type="text"
+            placeholder="🔎 Search emoji..."
+          />
         </div>
       </header>
       <div className="content">
