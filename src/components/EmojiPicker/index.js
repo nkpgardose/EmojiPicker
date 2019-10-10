@@ -93,6 +93,7 @@ function EmojiPicker({ emojis }) {
                       aria-label={key}
                       className="item"
                       key={key}
+                      title={key}
                       role="img"
                     >
                       {emoji.char}
@@ -106,16 +107,20 @@ function EmojiPicker({ emojis }) {
             <dl key={key} className="category" id={`emoji_${key}`}>
               <dt className="title">{key.replace(/_/g, " ")}</dt>
               <dd className="collection">
-                {value.map(emoji => (
-                  <button
-                    aria-label={emoji.key}
-                    className="item"
-                    key={emoji.key}
-                    role="img"
-                  >
-                    {emoji.char}
-                  </button>
-                ))}
+                {value.map(emoji => {
+                  const { key } = emoji;
+                  return (
+                    <button
+                      aria-label={key}
+                      className="item"
+                      key={key}
+                      title={key}
+                      role="img"
+                    >
+                      {emoji.char}
+                    </button>
+                  );
+                })}
               </dd>
             </dl>
           ))}
