@@ -1,147 +1,69 @@
 import React from "react";
+import PropTypes from "prop-types";
+import emojilib from "emojilib";
 import "./../../index.css";
 import "./index.css";
 
-const propTypes = {};
+const propTypes = {
+  emojis: PropTypes.objectOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        key: PropTypes.string,
+        category: PropTypes.string.isRequired,
+        char: PropTypes.string.isRequired,
+        fitzpatrick_scale: PropTypes.bool.isRequired,
+        keywords: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+      }).isRequired
+    ).isRequired
+  ).isRequired
+};
 
-const defaultProps = {};
+const defaultProps = {
+  emojis: emojilib.ordered.reduce((acc, key) => {
+    const currentEmojiObj = { ...emojilib.lib[key], key };
+    const category = currentEmojiObj.category;
+    const categoryEmojis = acc[category];
 
-function EmojiPicker() {
+    return {
+      ...acc,
+      [category]: categoryEmojis ? [...categoryEmojis, currentEmojiObj] : []
+    };
+  }, {})
+};
+
+function EmojiPicker({ emojis }) {
+  console.log(emojis);
   return (
     <div className="EmojiPicker">
-      <div className="selection">
+      <div className="content">
         <div className="searchbar">
           <div className="input"></div>
           <div className="submit"></div>
         </div>
-        <dl className="category">
-          <dt className="title">People</dt>
-          <dd className="collection">
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-          </dd>
-          <dt className="title">Nature</dt>
-          <dd className="collection">
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😀
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😃
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😄
-            </button>
-            <button className="item" aria-label="smile" role="img">
-              😆
-            </button>
-          </dd>
-        </dl>
+        <div className="emojis">
+          {Object.entries(emojis).map(emojisArr => {
+            const key = emojisArr[0];
+            const value = emojisArr[1];
+
+            return (
+              <dl key={key} className="category">
+                <dt className="title">{key.replace(/_/g, " ")}</dt>
+                <dd className="collection">
+                  {value.map(emoji => (
+                    <button
+                      aria-label={emoji.key}
+                      className="item"
+                      key={emoji.key}
+                      role="img"
+                    >
+                      {emoji.char}
+                    </button>
+                  ))}
+                </dd>
+              </dl>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
