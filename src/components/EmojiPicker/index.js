@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import emojilib from "emojilib";
 import "./../../index.css";
@@ -32,6 +32,22 @@ const defaultProps = {
 };
 
 function EmojiPicker({ emojis }) {
+  const [input, setInput] = useState("");
+  const [results, setResults] = useState([]);
+
+  function searchEmoji(e) {
+    const { value } = e.target;
+    const searchInputs = value.split(" ");
+    const items = Object.entries(emojilib.lib)
+      .filter(([key, { keywords }]) =>
+        searchInputs.find(input => keywords.includes(input))
+      )
+      .map(item => item[0]);
+
+    setResults(items);
+    setInput(value);
+  }
+
   return (
     <div className="EmojiPicker">
       <header className="head">
@@ -49,33 +65,50 @@ function EmojiPicker({ emojis }) {
             className="input"
             type="text"
             placeholder="🔎 Search emoji..."
+            value={input}
+            onChange={searchEmoji}
           />
         </div>
       </header>
       <div className="content">
         <div className="emojis">
-          {Object.entries(emojis).map(emojisArr => {
-            const key = emojisArr[0];
-            const value = emojisArr[1];
-
-            return (
-              <dl key={key} className="category" id={`emoji_${key}`}>
-                <dt className="title">{key.replace(/_/g, " ")}</dt>
-                <dd className="collection">
-                  {value.map(emoji => (
+          {results.length ? (
+            <dl className="category">
+              <dt className="title">Search Results</dt>
+              <dd className="collection">
+                {results.map(key => {
+                  const emoji = emojilib.lib[key];
+                  return (
                     <button
-                      aria-label={emoji.key}
+                      aria-label={key}
                       className="item"
-                      key={emoji.key}
+                      key={key}
                       role="img"
                     >
                       {emoji.char}
                     </button>
-                  ))}
-                </dd>
-              </dl>
-            );
-          })}
+                  );
+                })}
+              </dd>
+            </dl>
+          ) : null}
+          {Object.entries(emojis).map(([key, value]) => (
+            <dl key={key} className="category" id={`emoji_${key}`}>
+              <dt className="title">{key.replace(/_/g, " ")}</dt>
+              <dd className="collection">
+                {value.map(emoji => (
+                  <button
+                    aria-label={emoji.key}
+                    className="item"
+                    key={emoji.key}
+                    role="img"
+                  >
+                    {emoji.char}
+                  </button>
+                ))}
+              </dd>
+            </dl>
+          ))}
         </div>
       </div>
     </div>
