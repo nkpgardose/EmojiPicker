@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import emojilib from "emojilib";
 import "./../../index.css";
@@ -32,6 +32,7 @@ const defaultProps = {
 };
 
 function EmojiPicker({ emojis }) {
+  const emojiContent = useRef(null);
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
 
@@ -43,6 +44,13 @@ function EmojiPicker({ emojis }) {
         searchInputs.find(input => keywords.includes(input.toLowerCase()))
       )
       .map(item => item[0]);
+
+    if (items.length) {
+      const { current } = emojiContent;
+      if (current.scrollTop) {
+        current.scrollTo(0, 0);
+      }
+    }
 
     setResults(items);
     setInput(value);
@@ -70,7 +78,7 @@ function EmojiPicker({ emojis }) {
           />
         </div>
       </header>
-      <div className="content">
+      <div ref={emojiContent} className="content">
         <div className="emojis">
           {results.length ? (
             <dl className="category">
