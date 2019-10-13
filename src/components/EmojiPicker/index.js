@@ -15,7 +15,8 @@ const propTypes = {
         keywords: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
       }).isRequired
     ).isRequired
-  ).isRequired
+  ).isRequired,
+  searchText: PropTypes.string
 };
 
 const defaultProps = {
@@ -31,16 +32,12 @@ const defaultProps = {
   }, {})
 };
 
-function EmojiPicker({ emojis }) {
-  const emojiContent = useRef(null);
-  const [input, setInput] = useState("");
-  const [results, setResults] = useState([]);
-
-  function searchEmoji(e) {
+export function searchEmoji({ setResults, setInput, emojiContent }) {
+  return e => {
     const { value } = e.target;
     const searchInputs = value.split(" ");
     const items = Object.entries(emojilib.lib)
-      .filter(([key, { keywords }]) =>
+      .filter(([_key, { keywords }]) =>
         searchInputs.find(input => keywords.includes(input.toLowerCase()))
       )
       .map(item => item[0]);
@@ -54,7 +51,13 @@ function EmojiPicker({ emojis }) {
 
     setResults(items);
     setInput(value);
-  }
+  };
+}
+
+function EmojiPicker({ emojis, searchText }) {
+  const emojiContent = useRef(null);
+  const [input, setInput] = useState(searchText);
+  const [results, setResults] = useState([]);
 
   return (
     <div className="EmojiPicker">
@@ -70,11 +73,12 @@ function EmojiPicker({ emojis }) {
         </nav>
         <div className="searchbar">
           <input
+            autoFocus
             className="input"
-            type="text"
+            onChange={searchEmoji({ setResults, setInput, emojiContent })}
             placeholder="🔎 Search emoji..."
+            type="text"
             value={input}
-            onChange={searchEmoji}
           />
         </div>
       </header>
