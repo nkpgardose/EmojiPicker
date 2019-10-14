@@ -16,7 +16,8 @@ const propTypes = {
       }).isRequired
     ).isRequired
   ).isRequired,
-  searchText: PropTypes.string
+  searchText: PropTypes.string,
+  onFieldSearch: PropTypes.func
 };
 
 const defaultProps = {
@@ -29,10 +30,17 @@ const defaultProps = {
       ...acc,
       [category]: categoryEmojis ? [...categoryEmojis, currentEmojiObj] : []
     };
-  }, {})
+  }, {}),
+  searchText: "",
+  onFieldSearch() {}
 };
 
-export function searchEmoji({ setResults, setInput, emojiContent }) {
+export function searchEmoji({
+  emojiContent,
+  onFieldSearch,
+  setInput,
+  setResults
+}) {
   return e => {
     const { value } = e.target;
     const searchInputs = value.split(" ");
@@ -51,10 +59,11 @@ export function searchEmoji({ setResults, setInput, emojiContent }) {
 
     setResults(items);
     setInput(value);
+    onFieldSearch(items);
   };
 }
 
-function EmojiPicker({ emojis, searchText }) {
+function EmojiPicker({ emojis, searchText, onFieldSearch }) {
   const emojiContent = useRef(null);
   const [input, setInput] = useState(searchText);
   const [results, setResults] = useState([]);
@@ -75,7 +84,12 @@ function EmojiPicker({ emojis, searchText }) {
           <input
             autoFocus
             className="input"
-            onChange={searchEmoji({ setResults, setInput, emojiContent })}
+            onChange={searchEmoji({
+              emojiContent,
+              onFieldSearch,
+              setInput,
+              setResults
+            })}
             placeholder="🔎 Search emoji..."
             type="text"
             value={input}
@@ -111,20 +125,17 @@ function EmojiPicker({ emojis, searchText }) {
             <dl key={key} className="category" id={`emoji_${key}`}>
               <dt className="title">{key.replace(/_/g, " ")}</dt>
               <dd className="collection">
-                {value.map(emoji => {
-                  const { key } = emoji;
-                  return (
-                    <button
-                      aria-label={key}
-                      className="item"
-                      key={key}
-                      title={key}
-                      role="img"
-                    >
-                      {emoji.char}
-                    </button>
-                  );
-                })}
+                {value.map(({ key, char }) => (
+                  <button
+                    aria-label={key}
+                    className="item"
+                    key={key}
+                    role="img"
+                    title={key}
+                  >
+                    {char}
+                  </button>
+                ))}
               </dd>
             </dl>
           ))}
