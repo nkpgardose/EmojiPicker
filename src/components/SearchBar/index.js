@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import searchEmoji from "../EmojiPicker/searchEmoji";
+import "../../variables.css";
 import "./index.css";
 
 const propTypes = {

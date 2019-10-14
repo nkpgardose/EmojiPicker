@@ -2,10 +2,11 @@ import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { ordered, lib } from "emojilib";
 import SearchBar from "../SearchBar";
-import "./../../variables.css";
+import Emojis from "../Emojis";
+import "../../variables.css";
 import "./index.css";
 
-const propTypes = {
+export const propTypes = {
   emojis: PropTypes.objectOf(
     PropTypes.arrayOf(
       PropTypes.shape({
@@ -21,7 +22,7 @@ const propTypes = {
   searchText: PropTypes.string
 };
 
-const defaultProps = {
+export const defaultProps = {
   emojis: ordered.reduce((acc, key) => {
     const currentEmojiObj = { ...lib[key], key };
     const category = currentEmojiObj.category;
@@ -62,49 +63,7 @@ function EmojiPicker({ emojis, searchText, onFieldSearch }) {
         />
       </header>
       <div ref={emojiContent} className="content">
-        <div className="emojis">
-          {results.length ? (
-            <dl className="category">
-              <dt className="title" id="emoji_search_results">
-                Search Results
-              </dt>
-              <dd className="collection">
-                {results.map(key => {
-                  const emoji = lib[key];
-                  return (
-                    <button
-                      aria-label={key}
-                      className="item"
-                      key={key}
-                      title={key}
-                      role="img"
-                    >
-                      {emoji.char}
-                    </button>
-                  );
-                })}
-              </dd>
-            </dl>
-          ) : null}
-          {Object.entries(emojis).map(([key, value]) => (
-            <dl key={key} className="category" id={`emoji_${key}`}>
-              <dt className="title">{key.replace(/_/g, " ")}</dt>
-              <dd className="collection">
-                {value.map(({ key, char }) => (
-                  <button
-                    aria-label={key}
-                    className="item"
-                    key={key}
-                    role="img"
-                    title={key}
-                  >
-                    {char}
-                  </button>
-                ))}
-              </dd>
-            </dl>
-          ))}
-        </div>
+        <Emojis emojis={emojis} results={results} />
       </div>
     </div>
   );
