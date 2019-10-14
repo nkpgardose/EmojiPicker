@@ -6,7 +6,7 @@ import Emojis from "../Emojis";
 import "../../variables.css";
 import "./index.css";
 
-export const propTypes = {
+const propTypes = {
   emojis: PropTypes.objectOf(
     PropTypes.arrayOf(
       PropTypes.shape({

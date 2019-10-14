@@ -1,12 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { lib } from "emojilib";
-import { propTypes as EmojiPickerPropTypes } from "../EmojiPicker";
 import "../../variables.css";
 import "./index.css";
 
 const propTypes = {
-  emojis: EmojiPickerPropTypes.emojis,
+  emojis: PropTypes.objectOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        category: PropTypes.string.isRequired,
+        char: PropTypes.string.isRequired,
+        fitzpatrick_scale: PropTypes.bool.isRequired,
+        key: PropTypes.string,
+        keywords: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+      }).isRequired
+    ).isRequired
+  ).isRequired,
   results: PropTypes.arrayOf(PropTypes.string)
 };
 
