@@ -26,31 +26,6 @@
   padding: 0.7em;
 }
 
-.EmojiPicker > .head > .searchbar {
-  padding: 0 0.7em 0.7em;
-}
-
-.EmojiPicker > .head > .searchbar > .input {
-  appearance: none;
-  border-radius: 3px;
-  border: 0;
-  box-shadow: rgba(15, 15, 15, 0.098) 0px 0px 0px 1px inset,
-    rgba(15, 15, 15, 0.098) 0px 1px 1px inset;
-  box-sizing: border-box;
-  box-sizing: border-box;
-  display: block;
-  font-family: var(--family);
-  font-size: 1em;
-  height: 2.5rem;
-  margin-left: 0;
-  margin-right: 0;
-  outline: 0;
-  padding: 0 0.5rem;
-  transition: box-shadow 0.3s ease-in;
-  width: 100%;
-  will-change: box-shadow;
-}
-
 .EmojiPicker > .head > .nav > .item {
   border-radius: var(--radius);
   display: inline-block;
@@ -66,52 +41,4 @@
   margin-bottom: 0.7em;
   overflow-y: scroll;
   padding: 0 0.7em;
-}
-
-.EmojiPicker > .content > .emojis > .category {
-  margin: 0;
-}
-
-.EmojiPicker > .content > .emojis > .category > .title {
-  background-color: var(--bgColor);
-  font-size: var(--titleSize);
-  font-weight: 600;
-  padding: 0.25em;
-  position: sticky;
-  text-transform: capitalize;
-  top: 0;
-  z-index: 1;
-}
-
-.EmojiPicker > .content > .emojis > .category > .collection {
-  align-items: center;
-  display: grid;
-  grid-column-gap: 0.2em;
-  grid-row-gap: 0.5em;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(auto-fill, 1fr);
-  justify-items: center;
-  margin: 0.25em 0;
-}
-
-.EmojiPicker > .content > .emojis > .category > .collection > .item {
-  appearance: none;
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: var(--radius);
-  border: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: var(--emojiSize);
-  height: var(--emojiSize);
-  line-height: var(--emojiSize);
-  outline: none;
-  padding: 0;
-  transition: background-color 0.2s ease-in-out;
-  width: var(--emojiSize);
-  will-change: background-color;
-}
-
-.EmojiPicker > .head > .nav > .item:hover,
-.EmojiPicker > .content > .emojis > .category > .collection > .item:hover {
-  background-color: var(--emojiHover);
 }
