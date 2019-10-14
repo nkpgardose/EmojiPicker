@@ -1,0 +1,24 @@
+.SearchBar {
+  padding: 0 0.7em 0.7em;
+}
+
+.SearchBar > .input {
+  appearance: none;
+  border-radius: 3px;
+  border: 0;
+  box-shadow: rgba(15, 15, 15, 0.098) 0px 0px 0px 1px inset,
+    rgba(15, 15, 15, 0.098) 0px 1px 1px inset;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  font-family: var(--family);
+  font-size: 1em;
+  height: 2.5em;
+  margin-left: 0;
+  margin-right: 0;
+  outline: 0;
+  padding: 0 0.5em;
+  transition: box-shadow 0.3s ease-in;
+  width: 100%;
+  will-change: box-shadow;
+}

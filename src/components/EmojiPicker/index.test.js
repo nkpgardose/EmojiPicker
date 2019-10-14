@@ -11,8 +11,7 @@ it("renders without crashing", () => {
 });
 
 it("renders with default text on field", () => {
-  const wrapper = shallow(<EmojiPicker {...defaultProps} searchText="Hello" />);
-  expect(wrapper.is(".EmojiPicker")).toBe(true);
+  const wrapper = mount(<EmojiPicker {...defaultProps} searchText="Hello" />);
   expect(wrapper.containsAnyMatchingElements([<input value="Hello" />])).toBe(
     true
   );

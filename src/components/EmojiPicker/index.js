@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { ordered, lib } from "emojilib";
-import searchEmoji from "./searchEmoji";
+import SearchBar from "../SearchBar";
 import "./../../variables.css";
 import "./index.css";
 
@@ -53,21 +53,13 @@ function EmojiPicker({ emojis, searchText, onFieldSearch }) {
             );
           })}
         </nav>
-        <div className="searchbar">
-          <input
-            autoFocus
-            className="input"
-            onChange={searchEmoji({
-              emojiContent,
-              onFieldSearch,
-              setInput,
-              setResults
-            })}
-            placeholder="🔎 Search emoji..."
-            type="text"
-            value={input}
-          />
-        </div>
+        <SearchBar
+          input={input}
+          emojiContent={emojiContent}
+          onFieldSearch={onFieldSearch}
+          setInput={setInput}
+          setResults={setResults}
+        />
       </header>
       <div ref={emojiContent} className="content">
         <div className="emojis">
