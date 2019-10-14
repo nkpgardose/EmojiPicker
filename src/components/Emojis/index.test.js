@@ -4,7 +4,8 @@ import Emojis from ".";
 import { defaultProps as EmojiPickerDefaultProps } from "../EmojiPicker";
 
 const defaultProps = {
-  emojis: EmojiPickerDefaultProps.emojis
+  emojis: EmojiPickerDefaultProps.emojis,
+  onEmojiPick: () => {}
 };
 
 it("renders without crashing", () => {

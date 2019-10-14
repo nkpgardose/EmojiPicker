@@ -18,8 +18,9 @@ const propTypes = {
       }).isRequired
     ).isRequired
   ).isRequired,
-  onFieldSearch: PropTypes.func,
-  searchText: PropTypes.string
+  onEmojiPick: PropTypes.func.isRequired,
+  searchText: PropTypes.string,
+  onFieldSearch: PropTypes.func
 };
 
 export const defaultProps = {
@@ -37,7 +38,7 @@ export const defaultProps = {
   onFieldSearch() {}
 };
 
-function EmojiPicker({ emojis, searchText, onFieldSearch }) {
+function EmojiPicker({ emojis, searchText, onFieldSearch, onEmojiPick }) {
   const emojiContent = useRef(null);
   const [input, setInput] = useState(searchText);
   const [results, setResults] = useState([]);
@@ -63,7 +64,7 @@ function EmojiPicker({ emojis, searchText, onFieldSearch }) {
         />
       </header>
       <div ref={emojiContent} className="content">
-        <Emojis emojis={emojis} results={results} />
+        <Emojis emojis={emojis} results={results} onEmojiPick={onEmojiPick} />
       </div>
     </div>
   );

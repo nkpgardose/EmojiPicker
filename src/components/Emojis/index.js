@@ -16,14 +16,23 @@ const propTypes = {
       }).isRequired
     ).isRequired
   ).isRequired,
-  results: PropTypes.arrayOf(PropTypes.string)
+  results: PropTypes.arrayOf(PropTypes.string),
+  onEmojiPick: PropTypes.func.isRequired
 };
 
 const defaultProps = {
   results: []
 };
 
-function Emojis({ emojis, results }) {
+function Emojis({ emojis, results, onEmojiPick }) {
+  function onClick(emoji) {
+    return e => {
+      e.preventDefault();
+      e.stopPropagation();
+      onEmojiPick(emoji);
+    };
+  }
+
   return (
     <div className="Emojis">
       {results.length ? (
@@ -41,6 +50,7 @@ function Emojis({ emojis, results }) {
                   key={key}
                   title={key}
                   role="img"
+                  onClick={onClick(emoji)}
                 >
                   {emoji.char}
                 </button>
@@ -53,15 +63,16 @@ function Emojis({ emojis, results }) {
         <dl key={key} className="category" id={`emoji_${key}`}>
           <dt className="title">{key.replace(/_/g, " ")}</dt>
           <dd className="collection">
-            {value.map(({ key, char }) => (
+            {value.map(emoji => (
               <button
-                aria-label={key}
+                aria-label={emoji.key}
                 className="item"
-                key={key}
+                key={emoji.key}
                 role="img"
-                title={key}
+                title={emoji.key}
+                onClick={onClick(emoji)}
               >
-                {char}
+                {emoji.char}
               </button>
             ))}
           </dd>

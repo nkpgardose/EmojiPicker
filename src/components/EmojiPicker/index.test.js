@@ -4,7 +4,7 @@ import sinon from "sinon";
 
 import EmojiPicker from ".";
 
-const defaultProps = {};
+const defaultProps = { onEmojiPick: () => {} };
 
 it("renders without crashing", () => {
   shallow(<EmojiPicker {...defaultProps} />);
