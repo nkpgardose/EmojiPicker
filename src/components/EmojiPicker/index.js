@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { ordered, lib } from "emojilib";
 import searchEmoji from "./searchEmoji";
-import "./../../index.css";
+import "./../../variables.css";
 import "./index.css";
 
 const propTypes = {
