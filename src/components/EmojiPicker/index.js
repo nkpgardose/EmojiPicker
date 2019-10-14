@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
-import emojilib from "emojilib";
+import { ordered, lib } from "emojilib";
+import searchEmoji from "./searchEmoji";
 import "./../../index.css";
 import "./index.css";
 
@@ -8,21 +9,21 @@ const propTypes = {
   emojis: PropTypes.objectOf(
     PropTypes.arrayOf(
       PropTypes.shape({
-        key: PropTypes.string,
         category: PropTypes.string.isRequired,
         char: PropTypes.string.isRequired,
         fitzpatrick_scale: PropTypes.bool.isRequired,
+        key: PropTypes.string,
         keywords: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
       }).isRequired
     ).isRequired
   ).isRequired,
-  searchText: PropTypes.string,
-  onFieldSearch: PropTypes.func
+  onFieldSearch: PropTypes.func,
+  searchText: PropTypes.string
 };
 
 const defaultProps = {
-  emojis: emojilib.ordered.reduce((acc, key) => {
-    const currentEmojiObj = { ...emojilib.lib[key], key };
+  emojis: ordered.reduce((acc, key) => {
+    const currentEmojiObj = { ...lib[key], key };
     const category = currentEmojiObj.category;
     const categoryEmojis = acc[category];
 
@@ -34,34 +35,6 @@ const defaultProps = {
   searchText: "",
   onFieldSearch() {}
 };
-
-export function searchEmoji({
-  emojiContent,
-  onFieldSearch,
-  setInput,
-  setResults
-}) {
-  return e => {
-    const { value } = e.target;
-    const searchInputs = value.split(" ");
-    const items = Object.entries(emojilib.lib)
-      .filter(([_key, { keywords }]) =>
-        searchInputs.find(input => keywords.includes(input.toLowerCase()))
-      )
-      .map(item => item[0]);
-
-    if (items.length) {
-      const { current } = emojiContent;
-      if (current.scrollTop) {
-        current.scrollTo(0, 0);
-      }
-    }
-
-    setResults(items);
-    setInput(value);
-    onFieldSearch(items);
-  };
-}
 
 function EmojiPicker({ emojis, searchText, onFieldSearch }) {
   const emojiContent = useRef(null);
@@ -105,7 +78,7 @@ function EmojiPicker({ emojis, searchText, onFieldSearch }) {
               </dt>
               <dd className="collection">
                 {results.map(key => {
-                  const emoji = emojilib.lib[key];
+                  const emoji = lib[key];
                   return (
                     <button
                       aria-label={key}
