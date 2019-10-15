@@ -1,5 +1,6 @@
 {
   "name": "emoji-picker",
+  "homepage": "https://github.com/nkpgardose/EmojiPicker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,7 +15,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "styleguide:deploy": "gh-pages -d styleguide"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +36,7 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "gh-pages": "^2.1.1",
     "react-styleguidist": "^9.1.16",
     "sinon": "^7.5.0"
   }
