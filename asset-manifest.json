@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/nkpgardose/EmojiPicker/static/css/main.c0e9a5c3.chunk.css",
+    "main.js": "/nkpgardose/EmojiPicker/build/main.81bc79f7.js",
+    "runtime-main.js": "/nkpgardose/EmojiPicker/build/bundle.843c4f69.js",
+    "build/2.9f9604c7.js": "/nkpgardose/EmojiPicker/build/2.9f9604c7.js",
+    "index.html": "/nkpgardose/EmojiPicker/index.html",
+    "precache-manifest.006ec9a150a1268d18a4ef71caca098a.js": "/nkpgardose/EmojiPicker/precache-manifest.006ec9a150a1268d18a4ef71caca098a.js",
+    "service-worker.js": "/nkpgardose/EmojiPicker/service-worker.js",
+    "static/css/main.c0e9a5c3.chunk.css.map": "/nkpgardose/EmojiPicker/static/css/main.c0e9a5c3.chunk.css.map"
+  },
+  "entrypoints": [
+    "build/bundle.843c4f69.js",
+    "build/2.9f9604c7.js",
+    "static/css/main.c0e9a5c3.chunk.css",
+    "build/main.81bc79f7.js"
+  ]
+}
