@@ -25,7 +25,7 @@ setup on doing this repo.
 
 ## Want to Contribute?
 
-If you found a bug, or have any questions. Do post an [issue](https://github.com/nkpgardose/justgo/issues). :heart: :tada:
+If you found a bug, or have any questions. Do post an [issue](https://github.com/nkpgardose/EmojiPicker/issues). :heart: :tada:
 
 Want to contribute? Do pull request :heart: :bow:
 
