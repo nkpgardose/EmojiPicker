@@ -1,5 +1,5 @@
 import sinon from "sinon";
-import searchEmoji from "./searchEmoji";
+import searchEmoji from ".";
 
 it("executes given callbacks", () => {
   const mockElement = {

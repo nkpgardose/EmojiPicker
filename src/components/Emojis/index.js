@@ -5,6 +5,19 @@ import "../../variables.css";
 import "./index.css";
 
 const propTypes = {
+  /**
+   * emojies group by their respective emoji category.
+   * Recommended to use [emojib](https://github.com/muan/emojilib) in this
+   * component.
+   *
+   * ```
+   * {
+   * 	people: [{char: 😃, ... }, ...],
+   * 	objects: [{char: ⌚️, ... }, ...],
+   * 	...
+   * }
+   * ```
+   * */
   emojis: PropTypes.objectOf(
     PropTypes.arrayOf(
       PropTypes.shape({
@@ -16,7 +29,11 @@ const propTypes = {
       }).isRequired
     ).isRequired
   ).isRequired,
+  /**
+   * consists of emoji keys and this will display `Search Result`
+   */
   results: PropTypes.arrayOf(PropTypes.string),
+  /** returns the value of a selected emoji. */
   onEmojiPick: PropTypes.func.isRequired
 };
 

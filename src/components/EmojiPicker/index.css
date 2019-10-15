@@ -10,6 +10,7 @@
   font-size: var(--size);
   height: 24em;
   position: relative;
+  text-align: left;
   width: 25em;
 }
 
