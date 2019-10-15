@@ -7,6 +7,18 @@ import "../../variables.css";
 import "./index.css";
 
 const propTypes = {
+  /**
+   * Emojies group by their respective emoji category.
+   * By default, it pulls emojies at [emojib](https://github.com/muan/emojilib)
+   *
+   * ```
+   * {
+   * 	people: [{char: 😃, ... }, ...],
+   * 	objects: [{char: ⌚️, ... }, ...],
+   * 	...
+   * }
+   * ```
+   * */
   emojis: PropTypes.objectOf(
     PropTypes.arrayOf(
       PropTypes.shape({
@@ -18,8 +30,14 @@ const propTypes = {
       }).isRequired
     ).isRequired
   ).isRequired,
+  /** Returns the value of a selected emoji. */
   onEmojiPick: PropTypes.func.isRequired,
+  /** Initial value for search bar field. */
   searchText: PropTypes.string,
+  /**
+   * Returns the emojies search result when user is typing words on SearchBar.
+   * Typing `'hello'` on SearchBar will return `['wave']`.
+   * */
   onFieldSearch: PropTypes.func
 };
 
