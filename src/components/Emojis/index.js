@@ -6,7 +6,7 @@ import "./index.css";
 
 const propTypes = {
   /**
-   * Emojies group by their respective emoji category.
+   * emojies group by their respective emoji category.
    * Recommended to use [emojib](https://github.com/muan/emojilib) in this
    * component.
    *
@@ -30,10 +30,10 @@ const propTypes = {
     ).isRequired
   ).isRequired,
   /**
-   * Consists of emoji keys and this will display `Search Result`
+   * consists of emoji keys and this will display `Search Result`
    */
   results: PropTypes.arrayOf(PropTypes.string),
-  /** Returns the value of a selected emoji. */
+  /** returns the value of a selected emoji. */
   onEmojiPick: PropTypes.func.isRequired
 };
 

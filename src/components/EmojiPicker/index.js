@@ -8,7 +8,7 @@ import "./index.css";
 
 const propTypes = {
   /**
-   * Emojies group by their respective emoji category.
+   * emojies group by their respective emoji category.
    * By default, it pulls emojies at [emojib](https://github.com/muan/emojilib)
    *
    * ```
@@ -30,12 +30,14 @@ const propTypes = {
       }).isRequired
     ).isRequired
   ).isRequired,
-  /** Returns the value of a selected emoji. */
+  /** returns the value of a selected emoji. */
   onEmojiPick: PropTypes.func.isRequired,
-  /** Initial value for search bar field. */
+  /** initial value for search bar field. */
   searchText: PropTypes.string,
+  /** field placeholder text. */
+  inputPlaceholder: PropTypes.string,
   /**
-   * Returns the emojies search result when user is typing words on SearchBar.
+   * returns the emojies search result when user is typing words on SearchBar.
    * Typing `'hello'` on SearchBar will return `['wave']`.
    * */
   onFieldSearch: PropTypes.func
@@ -53,10 +55,17 @@ export const defaultProps = {
     };
   }, {}),
   searchText: "",
+  inputPlaceholder: "🔎 Search emoji...",
   onFieldSearch() {}
 };
 
-function EmojiPicker({ emojis, searchText, onFieldSearch, onEmojiPick }) {
+function EmojiPicker({
+  emojis,
+  searchText,
+  inputPlaceholder,
+  onFieldSearch,
+  onEmojiPick
+}) {
   const emojiContent = useRef(null);
   const [input, setInput] = useState(searchText);
   const [results, setResults] = useState([]);
@@ -79,6 +88,7 @@ function EmojiPicker({ emojis, searchText, onFieldSearch, onEmojiPick }) {
           onFieldSearch={onFieldSearch}
           setInput={setInput}
           setResults={setResults}
+          inputPlaceholder={inputPlaceholder}
         />
       </header>
       <div ref={emojiContent} className="content">

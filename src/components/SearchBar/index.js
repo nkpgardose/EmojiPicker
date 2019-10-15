@@ -7,10 +7,12 @@ import "./index.css";
 const propTypes = {
   /** value reflects on SearchBar's input element. */
   input: PropTypes.string,
+  /** field placeholder text. */
+  inputPlaceholder: PropTypes.string.isRequired,
   /** reference on a element for scrollTop condition. */
   emojiContent: PropTypes.shape({ current: PropTypes.object }).isRequired,
   /**
-   * Returns the emojies search result when user is typing words on SearchBar.
+   * returns the emojies search result when user is typing words on SearchBar.
    * Typing `'hello'` on SearchBar will return `['wave']`.
    * */
   onFieldSearch: PropTypes.func.isRequired,
@@ -25,11 +27,12 @@ const defaultProps = {
 };
 
 function SearchBar({
+  input,
+  inputPlaceholder,
   emojiContent,
   onFieldSearch,
   setInput,
-  setResults,
-  input
+  setResults
 }) {
   return (
     <div className="SearchBar">
@@ -42,7 +45,7 @@ function SearchBar({
           setInput,
           setResults
         })}
-        placeholder="🔎 Search emoji..."
+        placeholder={inputPlaceholder}
         type="text"
         value={input}
       />
