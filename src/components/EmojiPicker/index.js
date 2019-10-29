@@ -6,7 +6,7 @@ import Emojis from "../Emojis";
 import "../../variables.css";
 import "./index.css";
 
-const propTypes = {
+export const propTypes = {
   /**
    * emojies group by their respective emoji category.
    * By default, it pulls emojies at [emojib](https://github.com/muan/emojilib)
@@ -76,7 +76,7 @@ function EmojiPicker({
         <nav className="nav">
           {Object.keys(emojis).map(key => {
             return (
-              <button key={`nav_${key}`} className="item">
+              <button key={`nav_${key}`} className="Emoji">
                 {emojis[key][0].char}
               </button>
             );

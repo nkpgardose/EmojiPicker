@@ -5,6 +5,8 @@ import "../../variables.css";
 import "./index.css";
 
 const propTypes = {
+  /** Force this element to focus after mount. */
+  autoFocus: PropTypes.bool,
   /** value reflects on SearchBar's input element. */
   input: PropTypes.string,
   /** field placeholder text. */
@@ -23,10 +25,12 @@ const propTypes = {
 };
 
 const defaultProps = {
+  autoFocus: false,
   input: ""
 };
 
 function SearchBar({
+  autoFocus,
   input,
   inputPlaceholder,
   emojiContent,
@@ -37,7 +41,7 @@ function SearchBar({
   return (
     <div className="SearchBar">
       <input
-        autoFocus
+        autoFocus={autoFocus}
         className="input"
         onChange={searchEmoji({
           emojiContent,

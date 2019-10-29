@@ -23,25 +23,3 @@
   justify-items: center;
   margin: 0.25em 0;
 }
-
-.Emojis > .category > .collection > .item {
-  appearance: none;
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: var(--radius);
-  border: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: var(--emojiSize);
-  height: var(--emojiSize);
-  line-height: var(--emojiSize);
-  outline: none;
-  padding: 0;
-  transition: background-color 0.2s ease-in-out;
-  width: var(--emojiSize);
-  will-change: background-color;
-}
-
-.EmojiPicker > .head > .nav > .item:hover,
-.Emojis > .category > .collection > .item:hover {
-  background-color: var(--emojiHover);
-}
