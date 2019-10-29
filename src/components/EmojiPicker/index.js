@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { ordered, lib } from "emojilib";
 import SearchBar from "../SearchBar";
 import Emojis from "../Emojis";
+import Emoji from "../Emoji";
 import "../../variables.css";
 import "./index.css";
 
-const propTypes = {
+export const propTypes = {
   /**
    * emojies group by their respective emoji category.
    * By default, it pulls emojies at [emojib](https://github.com/muan/emojilib)
@@ -40,7 +41,14 @@ const propTypes = {
    * returns the emojies search result when user is typing words on SearchBar.
    * Typing `'hello'` on SearchBar will return `['wave']`.
    * */
-  onFieldSearch: PropTypes.func
+  onFieldSearch: PropTypes.func,
+  /**
+   * scrolls to current emoji collection top position.
+   *
+   * **NOTE:** To modify this function, please refer on it's default function first
+   *			 and start modify from there on.
+   */
+  onNavigateClick: PropTypes.func
 };
 
 export const defaultProps = {
@@ -48,15 +56,20 @@ export const defaultProps = {
     const currentEmojiObj = { ...lib[key], key };
     const category = currentEmojiObj.category;
     const categoryEmojis = acc[category];
-
     return {
       ...acc,
       [category]: categoryEmojis ? [...categoryEmojis, currentEmojiObj] : []
     };
   }, {}),
-  searchText: "",
   inputPlaceholder: "🔎 Search emoji...",
-  onFieldSearch() {}
+  onFieldSearch() {},
+  onNavigateClick(emojiContent, navRef) {
+    return e => {
+      e.preventDefault();
+      emojiContent.current.scrollTop = navRef.current.offsetTop;
+    };
+  },
+  searchText: ""
 };
 
 function EmojiPicker({
@@ -64,8 +77,16 @@ function EmojiPicker({
   searchText,
   inputPlaceholder,
   onFieldSearch,
-  onEmojiPick
+  onEmojiPick,
+  onNavigateClick
 }) {
+  const navRefs = Object.keys(emojis).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: React.createRef(null)
+    }),
+    {}
+  );
   const emojiContent = useRef(null);
   const [input, setInput] = useState(searchText);
   const [results, setResults] = useState([]);
@@ -75,10 +96,15 @@ function EmojiPicker({
       <header className="head">
         <nav className="nav">
           {Object.keys(emojis).map(key => {
+            const title = `nav_${key}`;
             return (
-              <a key={`nav_${key}`} className="item" href={`#emoji_${key}`}>
+              <Emoji
+                key={title}
+                title={title}
+                onClick={onNavigateClick(emojiContent, navRefs[key])}
+              >
                 {emojis[key][0].char}
-              </a>
+              </Emoji>
             );
           })}
         </nav>
@@ -92,7 +118,12 @@ function EmojiPicker({
         />
       </header>
       <div ref={emojiContent} className="content">
-        <Emojis emojis={emojis} results={results} onEmojiPick={onEmojiPick} />
+        <Emojis
+          emojis={emojis}
+          navRefs={navRefs}
+          results={results}
+          onEmojiPick={onEmojiPick}
+        />
       </div>
     </div>
   );

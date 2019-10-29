@@ -9,7 +9,8 @@ const defaultProps = {
   },
   onFieldSearch: () => {},
   setInput: () => {},
-  setResults: () => {}
+  setResults: () => {},
+  inputPlaceholder: "Search emoji(inputPlaceholder)"
 };
 
 it("renders without crashing", () => {

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { lib } from "emojilib";
+import Emoji from "../Emoji";
 import "../../variables.css";
 import "./index.css";
 
@@ -29,6 +30,7 @@ const propTypes = {
       }).isRequired
     ).isRequired
   ).isRequired,
+  navRefs: PropTypes.objectOf(PropTypes.object),
   /**
    * consists of emoji keys and this will display `Search Result`
    */
@@ -38,10 +40,11 @@ const propTypes = {
 };
 
 const defaultProps = {
+  navRefs: {},
   results: []
 };
 
-function Emojis({ emojis, results, onEmojiPick }) {
+function Emojis({ emojis, navRefs, onEmojiPick, results }) {
   function onClick(emoji) {
     return e => {
       e.preventDefault();
@@ -61,37 +64,32 @@ function Emojis({ emojis, results, onEmojiPick }) {
             {results.map(key => {
               const emoji = lib[key];
               return (
-                <button
-                  aria-label={key}
-                  className="item"
-                  key={key}
-                  title={key}
-                  role="img"
-                  onClick={onClick(emoji)}
-                >
+                <Emoji key={key} onClick={onClick(emoji)} title={key}>
                   {emoji.char}
-                </button>
+                </Emoji>
               );
             })}
           </dd>
         </dl>
       ) : null}
       {Object.entries(emojis).map(([key, value]) => (
-        <dl key={key} className="category" id={`emoji_${key}`}>
+        <dl
+          ref={navRefs[key]}
+          key={key}
+          className="category"
+          id={`content_${key}`}
+        >
           <dt className="title">{key.replace(/_/g, " ")}</dt>
           <dd className="collection">
-            {value.map(emoji => (
-              <button
-                aria-label={emoji.key}
-                className="item"
-                key={emoji.key}
-                role="img"
-                title={emoji.key}
-                onClick={onClick(emoji)}
-              >
-                {emoji.char}
-              </button>
-            ))}
+            {value.map(emoji => {
+              const { key, char } = emoji;
+
+              return (
+                <Emoji key={key} title={key} onClick={onClick(emoji)}>
+                  {char}
+                </Emoji>
+              );
+            })}
           </dd>
         </dl>
       ))}

@@ -2,7 +2,7 @@
 
 > 🎣👌 light emoji picker made in React.
 
-## Getting Started
+## 📄 Getting Started
 
 Run app and page examples.
 
@@ -18,17 +18,17 @@ Run components using styleguide.
 $ yarn start:styleguide
 ```
 
-## Recommendation?
+## 🤔 Recommendation?
 
 Use VS Code since I update `.vscode` settings from time to time. That's my
 setup on doing this repo.
 
-## Want to Contribute?
+## ✍️ Want to Contribute?
 
 If you found a bug, or have any questions. Do post an [issue](https://github.com/nkpgardose/EmojiPicker/issues). :heart: :tada:
 
 Want to contribute? Do pull request :heart: :bow:
 
-# License
+# ⚖️ License
 
 MIT © [Neil Kim Gardose](https://github.com/nkpgardose)

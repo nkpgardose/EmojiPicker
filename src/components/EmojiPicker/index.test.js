@@ -59,5 +59,7 @@ it("logs performance on multiple words on search", () => {
     }
   });
   const t1 = performance.now();
-  console.log("Call EmojiPicker took " + (t1 - t0) + " milliseconds.");
+  console.log(
+    "Search result on EmojiPicker took " + (t1 - t0) + " milliseconds."
+  );
 });

@@ -27,19 +27,11 @@
   padding: 0.7em;
 }
 
-.EmojiPicker > .head > .nav > .item {
-  border-radius: var(--radius);
-  display: inline-block;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-  vertical-align: middle;
-  will-change: background-color;
-}
-
 .EmojiPicker > .content {
   box-sizing: border-box;
   flex: 1;
   margin-bottom: 0.7em;
   overflow-y: scroll;
   padding: 0 0.7em;
+  scroll-behavior: smooth;
 }
