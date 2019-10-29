@@ -28,11 +28,19 @@
 }
 
 .EmojiPicker > .head > .nav > .item {
+  appearance: none;
+  background-color: rgba(0, 0, 0, 0);
   border-radius: var(--radius);
-  display: inline-block;
-  text-decoration: none;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: var(--emojiSize);
+  height: var(--emojiSize);
+  line-height: var(--emojiSize);
+  outline: none;
+  padding: 0;
   transition: background-color 0.2s ease-in-out;
-  vertical-align: middle;
+  width: var(--emojiSize);
   will-change: background-color;
 }
 

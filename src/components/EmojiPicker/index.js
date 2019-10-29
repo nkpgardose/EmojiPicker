@@ -76,9 +76,9 @@ function EmojiPicker({
         <nav className="nav">
           {Object.keys(emojis).map(key => {
             return (
-              <a key={`nav_${key}`} className="item" href={`#emoji_${key}`}>
+              <button key={`nav_${key}`} className="item">
                 {emojis[key][0].char}
-              </a>
+              </button>
             );
           })}
         </nav>
