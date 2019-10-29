@@ -43,7 +43,7 @@ export const propTypes = {
    * */
   onFieldSearch: PropTypes.func,
   /**
-   * returns emoji keys string
+   * scrolls to current emoji collection top position.
    *
    * **NOTE:** To modify this function, please refer on it's default function first
    *			 and start modify from there on.
@@ -56,13 +56,11 @@ export const defaultProps = {
     const currentEmojiObj = { ...lib[key], key };
     const category = currentEmojiObj.category;
     const categoryEmojis = acc[category];
-
     return {
       ...acc,
       [category]: categoryEmojis ? [...categoryEmojis, currentEmojiObj] : []
     };
   }, {}),
-  searchText: "",
   inputPlaceholder: "🔎 Search emoji...",
   onFieldSearch() {},
   onNavigateClick(emojiContent, navRef) {
@@ -70,7 +68,8 @@ export const defaultProps = {
       e.preventDefault();
       emojiContent.current.scrollTop = navRef.current.offsetTop;
     };
-  }
+  },
+  searchText: ""
 };
 
 function EmojiPicker({
