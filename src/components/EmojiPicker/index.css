@@ -33,4 +33,5 @@
   margin-bottom: 0.7em;
   overflow-y: scroll;
   padding: 0 0.7em;
+  scroll-behavior: smooth;
 }

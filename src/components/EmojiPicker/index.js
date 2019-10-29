@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { ordered, lib } from "emojilib";
 import SearchBar from "../SearchBar";
 import Emojis from "../Emojis";
+import Emoji from "../Emoji";
 import "../../variables.css";
 import "./index.css";
 
@@ -40,7 +41,14 @@ export const propTypes = {
    * returns the emojies search result when user is typing words on SearchBar.
    * Typing `'hello'` on SearchBar will return `['wave']`.
    * */
-  onFieldSearch: PropTypes.func
+  onFieldSearch: PropTypes.func,
+  /**
+   * returns emoji keys string
+   *
+   * **NOTE:** To modify this function, please refer on it's default function first
+   *			 and start modify from there on.
+   */
+  onNavigateClick: PropTypes.func
 };
 
 export const defaultProps = {
@@ -56,7 +64,13 @@ export const defaultProps = {
   }, {}),
   searchText: "",
   inputPlaceholder: "🔎 Search emoji...",
-  onFieldSearch() {}
+  onFieldSearch() {},
+  onNavigateClick(emojiContent, navRef) {
+    return e => {
+      e.preventDefault();
+      emojiContent.current.scrollTop = navRef.current.offsetTop;
+    };
+  }
 };
 
 function EmojiPicker({
@@ -64,8 +78,16 @@ function EmojiPicker({
   searchText,
   inputPlaceholder,
   onFieldSearch,
-  onEmojiPick
+  onEmojiPick,
+  onNavigateClick
 }) {
+  const navRefs = Object.keys(emojis).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: React.createRef(null)
+    }),
+    {}
+  );
   const emojiContent = useRef(null);
   const [input, setInput] = useState(searchText);
   const [results, setResults] = useState([]);
@@ -75,10 +97,15 @@ function EmojiPicker({
       <header className="head">
         <nav className="nav">
           {Object.keys(emojis).map(key => {
+            const title = `nav_${key}`;
             return (
-              <button key={`nav_${key}`} className="Emoji">
+              <Emoji
+                key={title}
+                title={title}
+                onClick={onNavigateClick(emojiContent, navRefs[key])}
+              >
                 {emojis[key][0].char}
-              </button>
+              </Emoji>
             );
           })}
         </nav>
@@ -92,7 +119,12 @@ function EmojiPicker({
         />
       </header>
       <div ref={emojiContent} className="content">
-        <Emojis emojis={emojis} results={results} onEmojiPick={onEmojiPick} />
+        <Emojis
+          emojis={emojis}
+          navRefs={navRefs}
+          results={results}
+          onEmojiPick={onEmojiPick}
+        />
       </div>
     </div>
   );
