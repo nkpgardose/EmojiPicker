@@ -11,16 +11,16 @@ jobs:
     if: github.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'major'
     runs-on: ubuntu-latest
     steps:
-    - name: Bump up major version
-      run: echo Bump up major version!
+      - name: Bump up major version
+        run: echo Bump up major version!
   minor:
-    if: gitub.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'minor'
+    if: github.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'minor'
     runs-on: ubuntu-latest
     steps:
-    - name: Bump up minor version
-      run: echo Bump up minor version!
+      - name: Bump up minor version
+        run: echo Bump up minor version!
   patch:
-    if: gitub.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'patch'
+    if: github.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'patch'
     runs-on: ubuntu-latest
     steps:
       - name: Bump up patch version
