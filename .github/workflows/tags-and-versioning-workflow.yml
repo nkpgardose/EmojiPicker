@@ -1,26 +1,16 @@
 name: Tag and version up
+
 on:
   pull_request:
-    types: [closed]
-    branches:
-      - master
+    types: closed
 
 jobs:
-  major:
-    if: github.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'major'
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Bump up major version
-        run: echo Bump up major version!
-  minor:
-    if: github.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'minor'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Bump up minor version
-        run: echo Bump up minor version!
-  patch:
-    if: github.event_name == 'pull_request' && github.event.merged == true && github.event.label.name == 'patch'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Bump up patch version
-        run: echo Bump up patch version!
+      - name: Bump up version
+        uses: K-Phoen/semver-release-action@master
+        with:
+          release_branch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
