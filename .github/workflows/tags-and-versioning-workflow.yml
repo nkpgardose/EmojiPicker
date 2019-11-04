@@ -1,4 +1,5 @@
 name: Tag and version up
+
 on:
   pull_request:
     types: [closed]
