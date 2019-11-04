@@ -1,8 +1,8 @@
 # Emoji Picker
 
-> 🎣👌 light emoji picker made in React.
+> :fishing_pole_and_fish: :ok_hand: light emoji picker made in React.
 
-## 📄 Getting Started
+## :page_with_curl: Getting Started
 
 Run app and page examples.
 
@@ -18,17 +18,22 @@ Run components using styleguide.
 $ yarn start:styleguide
 ```
 
-## 🤔 Recommendation?
+## :+1: Import to your project
+
+Soon.
+
+## :thinking: Recommendation?
 
 Use VS Code since I update `.vscode` settings from time to time. That's my
 setup on doing this repo.
 
-## ✍️ Want to Contribute?
+## :writing_hand: Want to Contribute?
 
-If you found a bug, or have any questions. Do post an [issue](https://github.com/nkpgardose/EmojiPicker/issues). :heart: :tada:
+If you found a bug, or have any questions.
+Do post an [issue](https://github.com/nkpgardose/EmojiPicker/issues). :heart: :tada:
 
 Want to contribute? Do pull request :heart: :bow:
 
-# ⚖️ License
+## :balance_scale: License
 
 MIT © [Neil Kim Gardose](https://github.com/nkpgardose)
