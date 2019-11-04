@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/nkpgardose/EmojiPicker/static/css/main.944cb711.chunk.css",
-    "main.js": "/nkpgardose/EmojiPicker/build/main.dcd03333.js",
-    "runtime-main.js": "/nkpgardose/EmojiPicker/build/bundle.843c4f69.js",
-    "build/2.2a4166eb.js": "/nkpgardose/EmojiPicker/build/2.2a4166eb.js",
-    "index.html": "/nkpgardose/EmojiPicker/index.html",
-    "precache-manifest.55b92356f916c8cb18c717e45b256a66.js": "/nkpgardose/EmojiPicker/precache-manifest.55b92356f916c8cb18c717e45b256a66.js",
-    "service-worker.js": "/nkpgardose/EmojiPicker/service-worker.js",
-    "static/css/main.944cb711.chunk.css.map": "/nkpgardose/EmojiPicker/static/css/main.944cb711.chunk.css.map"
+    "main.css": "/EmojiPicker/static/css/main.944cb711.chunk.css",
+    "main.js": "/EmojiPicker/build/main.dcd03333.js",
+    "runtime-main.js": "/EmojiPicker/build/bundle.843c4f69.js",
+    "build/2.2a4166eb.js": "/EmojiPicker/build/2.2a4166eb.js",
+    "index.html": "/EmojiPicker/index.html",
+    "precache-manifest.55b92356f916c8cb18c717e45b256a66.js": "/EmojiPicker/precache-manifest.55b92356f916c8cb18c717e45b256a66.js",
+    "service-worker.js": "/EmojiPicker/service-worker.js",
+    "static/css/main.944cb711.chunk.css.map": "/EmojiPicker/static/css/main.944cb711.chunk.css.map"
   },
   "entrypoints": [
     "build/bundle.843c4f69.js",
