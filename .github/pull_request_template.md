@@ -1,9 +1,10 @@
 ---
-name: ":bow: posting feature request"
+name: 'Posting feature request'
 about: feature request for EmojiPicker
-title: ""
-labels: "minor"
-assignees: nkpgardose
+title: ''
+labels: 'i: minor'
+assignee: ''
+
 ---
 
 :clipboard: **Description**
