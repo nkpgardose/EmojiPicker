@@ -12,4 +12,6 @@ main component that renders every components that built EmojiPicker
 />
 ```
 
-To use the component `npm install @EmojiPicker/main`
+TODO:
+
+- [ ] To use the component `npm install @EmojiPicker/main`
