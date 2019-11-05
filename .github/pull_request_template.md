@@ -4,5 +4,4 @@ about: feature request for EmojiPicker
 title: ""
 labels: "minor"
 assignees: nkpgardose
-
 ---
