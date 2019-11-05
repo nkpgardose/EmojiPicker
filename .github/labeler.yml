@@ -1,2 +1,7 @@
 minor:
-  - ./**/*
+  # - ./**/* not working atm.
+  - ./*
+  - .github/**/*
+  - public/**/*
+  - src/**/*
+  - vscode/**/*
