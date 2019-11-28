@@ -2,20 +2,12 @@
   "author": "Neil Gardose",
   "description": "Emoji picker made in React",
   "homepage": "http://neil.onl/EmojiPicker",
-  "keywords": [
-    "emoji",
-    "emoji picker",
-    "component",
-    "react component"
-  ],
   "license": "MIT",
-  "name": "emoji-picker",
-  "private": false,
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/nkpgardose/EmojiPicker"
   },
-  "version": "0.1.0",
   "dependencies": {
     "emojilib": "^2.4.0",
     "react": "^16.10.2",
