@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/EmojiPicker/static/css/main.944cb711.chunk.css",
-    "main.js": "/EmojiPicker/build/main.e1567e0d.js",
-    "runtime-main.js": "/EmojiPicker/build/bundle.f5be1170.js",
-    "build/2.012c9e31.js": "/EmojiPicker/build/2.012c9e31.js",
+    "main.js": "/EmojiPicker/build/main.d84aa501.js",
+    "runtime-main.js": "/EmojiPicker/build/bundle.e58c7494.js",
+    "build/2.741db9c9.js": "/EmojiPicker/build/2.741db9c9.js",
     "index.html": "/EmojiPicker/index.html",
-    "precache-manifest.a574b579d64e4a4fefb0a90b5075b540.js": "/EmojiPicker/precache-manifest.a574b579d64e4a4fefb0a90b5075b540.js",
+    "precache-manifest.c468c5f5a9d01ffbad9372a566e29904.js": "/EmojiPicker/precache-manifest.c468c5f5a9d01ffbad9372a566e29904.js",
     "service-worker.js": "/EmojiPicker/service-worker.js",
     "static/css/main.944cb711.chunk.css.map": "/EmojiPicker/static/css/main.944cb711.chunk.css.map"
   },
   "entrypoints": [
-    "build/bundle.f5be1170.js",
-    "build/2.012c9e31.js",
+    "build/bundle.e58c7494.js",
+    "build/2.741db9c9.js",
     "static/css/main.944cb711.chunk.css",
-    "build/main.e1567e0d.js"
+    "build/main.d84aa501.js"
   ]
 }
