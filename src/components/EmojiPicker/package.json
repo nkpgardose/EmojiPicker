@@ -1,0 +1,20 @@
+{
+  "name": "EmojiPicker",
+  "version": "0.4.0",
+  "description": "Emoji picker made in React",
+  "main": "index.js",
+  "keywords": [
+    "emoji",
+    "emoji picker",
+    "component",
+    "react component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nkpgardose/EmojiPicker.git",
+    "directory": "src/components/EmojiPicker"
+  },
+  "author": "Neil Gardose",
+  "license": "MIT",
+  "private": false
+}
